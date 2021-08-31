@@ -1,7 +1,9 @@
 var bdayInput = document.querySelector('#bday-input');
 var showBtn = document.querySelector('#show-btn');
 var resultDiv = document.querySelector('#result');
-
+var processingCont = document.querySelector('.processing-cont');
+  
+processingCont.style.display = "none";
 
 
 function reverseString(str) {
@@ -189,6 +191,11 @@ function getPreviousPalindromeDate(date) {
 
   
   function clickHandler(e) {
+
+    processingCont.style.display = "none";
+    resultDiv.style.display = "block";
+
+
     var bdayString = bdayInput.value;
   
     if (bdayString !== '') {
@@ -229,5 +236,18 @@ function getPreviousPalindromeDate(date) {
       }
     }
   }
+
+
   
-  showBtn.addEventListener('click', clickHandler);
+
+  function Timer(){
+    resultDiv.style.display = "none";
+    processingCont.style.display = "block";
+    setTimeout(clickHandler, 3000)
+  }
+  
+  showBtn.addEventListener('click', Timer);
+
+
+
+
